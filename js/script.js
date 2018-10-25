@@ -12,9 +12,9 @@ function init() {
             entry.id = task;
             entry.innerText = task;
             markButton.type = "submit";
-            markButton.innerText = "Done";
+            markButton.value = "Done";
             eraseButton.type = "submit";
-            eraseButton.innerText = "Erase";
+            eraseButton.value = "Erase";
             element.appendChild(entry);
             element.appendChild(markButton);
             element.appendChild(eraseButton);            
@@ -25,9 +25,9 @@ function init() {
 
                 if(document.getElementById(task).style.textDecoration = "line-through") {
                     document.getElementById(task).style.textDecoration = "none";
-                } else { 
-                    document.getElementById(task).style.textDecoration = "line-through";
-                }
+                } 
+
+                document.getElementById(task).style.textDecoration = "line-through";
             })
             // Elimine de la lista
             eraseButton.addEventListener("submit", function () {
