@@ -7,20 +7,24 @@ function init() {
         add(task, priority = false) {
             let element = document.createElement("li");
             let markButton = document.createElement("input");
+            let mark = document.createElement("label");
             let eraseButton = document.createElement("input");
+            let erase = document.createElement("label");
             let entry = document.createElement("p");
             entry.id = task;
             entry.innerText = task;
-            markButton.type = "submit";
-            markButton.value = "Done";
+            markButton.type = "checkbox";
+            mark.innerText = "Done";
             eraseButton.type = "submit";
-            eraseButton.value = "Erase";
+            erase.innerText = "Erase";
             element.appendChild(entry);
+            element.appendChild(mark);
             element.appendChild(markButton);
+            element.appendChild(erase);
             element.appendChild(eraseButton);            
 
             // Añadir un boton para marcar de finalizado
-            markButton.addEventListener("submit", (evt) => {
+            markButton.addEventListener("change", (evt) => {
                 evt.preventDefault();
 
                 if(document.getElementById(task).style.textDecoration = "line-through") {
@@ -30,7 +34,7 @@ function init() {
                 document.getElementById(task).style.textDecoration = "line-through";
             })
             // Elimine de la lista
-            eraseButton.addEventListener("submit", function () {
+            eraseButton.addEventListener("change", function () {
                 console.log(this);
                 let parent = this.parentNode;
                 if (parent) {
