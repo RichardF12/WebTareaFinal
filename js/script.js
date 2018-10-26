@@ -15,7 +15,7 @@ function init() {
             entry.innerText = task;
             markButton.type = "checkbox";
             mark.innerText = "Done";
-            eraseButton.type = "submit";
+            eraseButton.type = "checkbox";
             erase.innerText = "Erase";
             element.appendChild(entry);
             element.appendChild(mark);
@@ -24,21 +24,20 @@ function init() {
             element.appendChild(eraseButton);            
 
             // Añadir un boton para marcar de finalizado
-            markButton.addEventListener("change", (evt) => {
-                evt.preventDefault();
+            markButton.addEventListener("change", function() {
 
-                if(document.getElementById(task).style.textDecoration = "line-through") {
+                if(this.checked) {
+                    document.getElementById(task).style.textDecoration = "line-through";
+                } else {
                     document.getElementById(task).style.textDecoration = "none";
-                } 
-
-                document.getElementById(task).style.textDecoration = "line-through";
+                }
             })
             // Elimine de la lista
             eraseButton.addEventListener("change", function () {
                 console.log(this);
-                let parent = this.parentNode;
-                if (parent) {
-                    parent.removeChild(this);
+                if (this.checked) {
+                    let parent = this.parentNode;
+                    parent.removeChild(element);
                 }
             });
             /*=========================================*/
