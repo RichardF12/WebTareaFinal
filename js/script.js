@@ -34,10 +34,12 @@ function init() {
             })
             // Elimine de la lista
             eraseButton.addEventListener("change", function () {
-                console.log(this);
+                console.log(element);
                 if (this.checked) {
-                    let parent = this.parentNode;
-                    parent.removeChild(element);
+                    let parent = element.parentNode;
+                    if(parent){
+                        parent.removeChild(element);
+                    }
                 }
             });
             /*=========================================*/
